@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[快运用 | 入门体验小教程 | 快到飞起]]></title>
+    <url>%2F2018%2F04%2F04%2FquickApp%2F</url>
+    <content type="text"><![CDATA[什么是快运用 快应用是基于手机硬件平台的新型应用形态，标准是由主流手机厂商组成的快应用联盟联合制定。 快应用标准的诞生将在研发接口、能力接入、开发者服务等层面建设标准平台，以平台化的生态模式对个人开发者和企业开发者全品类开放。 快应用具备传统APP完整的应用体验，无需安装、即点即用。 详情可见快运用官网官网 前言2018年3月20日，小米、中兴、华为、金立、联想、魅族、努比亚、OPPO、vivo、一加，共十家手机厂商在北京联合召开快应用标准启动发布会，手机厂商与中国信息通信研究院、电信终端产业协会、中国软件行业协会及数百家知名移动互联网应用企业共襄盛举，共同见证移动应用新生态的到来。 感觉看起来很牛逼，小编也想去看看究竟是个什么玩意儿。通过小编到官网的一探究竟，发现和Vue.js很相似，不管是结构还是语法上都很类似。好吧，话不多少，随着小编一起去体验一把吧。 准备工作 这里的入门教程 一台安卓手机或者是模拟器 一台电脑 出发1.搭建环境【安装node.js】需安装6.0以上版本的NodeJS，请从NodeJS官网下载，推荐v6.11.3注意: 不要使用8.0.*版本．这个版本内部ZipStream实现与node-archive包不兼容，会引起报错这是官方推荐的版本 【安装工具hap-toolkit】通过npm仓库安装，在命令行中执行以下命令：npm install -g hap-toolkit在命令行中执行hap -V会输出版本信息表示hap-toolkit安装成功，注意V是大写。 【创建工程】新建一个文件夹，打开命令行，并cd到新建的文件夹目录下，进行初始化项目，执行以下命令：hap init YourProjectName【安装依赖】一定要cd到你初始化的项目目录下，不是当前目录哦npm install【编译项目】在项目文件夹下，执行以下命令：npm run build这是，可能会报如下的错 淡定，只需要执行一次 hap update –force 即可解决, 对包强制进行升级。 然后再执行npm run build进行编译便能成功，可以看到如下界面。 编译成功以后，工程项目会多处两个文件夹： build：存放编译后的页面js文件和素材 dist：存放编译打包生成的rpk压缩文件，这个rpk就是快应用的最终执行文件了。 【最后一步，预览项目】你的手机或者模拟器需要安装 快应用调试器 和 平台预览版 下载后用直接USB或者QQ传输安装到手机。注意，两个apk都要安装！平台预览版是模拟快应用的运行时环境的。 安装前面编译出来的rpk文件 方法一： 本地安装预览 将你的工程中/dist目录下编译产出的rpk文件，复制到手机文件系统中。打开手机上的“快应用调试器” 点击“本地安装” 选择手机文件系统前面复制进来的rpk文件，即可预览到你的快应用的界面。 方法二： 扫码预览在项目文件夹下运行以下命令npm run server服务器启动后会显示如下的二维码，打开手机上的“快应用调试器”，点击“扫码安装”，扫这个二维码即可安装快应用进行预览。 推荐使用方法一，方法二可能扫描识别不了二维码。 如果看到如下界面，表示你已经成功开启了【快运用】的大门了，可以愉快的开始学习快运用了。 OK,至此快运用的介绍就到这里了。如果感兴趣的可以到官网了解更多官方文档 var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?cb26b3220fad854a3119dd8d11ddc6eb"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })();]]></content>
+      <categories>
+        <category>快运用</category>
+      </categories>
+      <tags>
+        <tag>快运用</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[教学视频 | git的基本命令使用教学视频]]></title>
     <url>%2F2018%2F04%2F01%2FgitLearnMovie%2F</url>
     <content type="text"><![CDATA[前言git是当今非常流行的版本控制管理器，在项目开发中使用得非常多。但是很多人去网上看着文章学习的时候总会出现一些大大小小的错误，导致操作失败。这是一个全程录制的教学视频，每一步都很详细，希望能够帮助到你并能够顺利的使用git。 视频中的git命令清单可以参看我的博客【Git 常用的基本命令】 演示视频（可全屏观看） git的基本命令123456789101112131415161718192021222324252627282930配置git config –global user.name “Your Name”git config –global user.email “email@example.com“本地仓库—&gt;远程仓库的基本步骤git init 新建一个仓库git status 查看仓库当前的状态git add 可反复多次使用，添加多个文件；git add ./–all 添加当前文件夹的所有文件git commit -m “修改内容” 提交到本地仓库git remote 查看当前配置有哪些远程仓库git remote add origin https://github.com/WangHuagang/git-demo.git 将文件添加到指定的GitHub上的仓库git push -u origin master(分支) 将文件推送到远程仓库上git pull origin master(将远程仓库的东西“拉”回来)其余常用的命令git status -s 查看变更日志git log 可以查看提交日志git reset –hard (6位版本号) 回归到指定版本git diff 可以用于对比当前状态和版本库中状态的变化git branch 查看分支git branch （分支名） 创建一个新的分支git checkout （分支名） 切换分支git clone https://github.com/WangHuagang/git-demo.git .(.表示当前目录) 将远程仓库整个项目克隆到当前目录git merge 合并某分支到当前分支git branch -d 删除分支将本地文件放在github上显示1.创建gh-pages分支，利用gh-pages分支上传到远程仓库2.配置文件CNAME：绑定域名 var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?cb26b3220fad854a3119dd8d11ddc6eb"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })();]]></content>
@@ -155,17 +166,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[base64编码的原理及分析]]></title>
-    <url>%2F2018%2F03%2F18%2Fbase64%2F</url>
-    <content type="text"><![CDATA[1.为什么要使用base64编码因为有些网络传送渠道并不支持所有的字节，例如传统的邮件只支持可见字符的传送，像ASCII码的控制字符就不能通过邮件传送。这样就受到了很大的限制，比如图片二进制流的每个字节不可能全部是可见字符，所以就传送不了。最好的方法就是在不改变传统协议的情况下，开辟一种新的方案来支持二进制文件的传送。把不可见字符用可见字符来表示。而Base64就是一种基于64个可见字符来表示二进制数据的表示方法。 提示：不可见字符其实并不是不显示，只是这些字符在屏幕上显示不出来，比如：换行符、回车、退格等字符。 2.base64编码的原理Base64可以将ASCII字符串或者是二进制编码成只包含A—Z，a—z，0—9，+，/ 这64个字符（ 26个大写字母，26个小写字母，10个数字，1个+，一个 / 刚好64个字符）。 Base64的编码规则是将3个8位字节(3×8=24位)编码成4个6位的字节(4×6=24位)，之后在每个6位字节前面，补充两个0，形成4个8位字节的形式，那么取值范围就变成了0~63。又因为2的6次方等于64，所以每6个位组成一个单元。 下图为base64的字符转换表： 说太多了感觉复杂，直接上例子： 该图片转载自 https://www.jianshu.com/p/dd8bffc91c3d 所以，abc的base64的编码为YWJj；ab的base64编码为YWI=；a的base64编码为YQ==。 若末尾的为0，则对应的是A，但通常都用=来表示。因为 = 字符并不在Base64编码索引表中，其意义在于结束符号，在Base64解码时遇到 = 时即可知道一个Base64编码字符串结束。解码是对编码的逆向操作，但注意一点：对于最后的两个 = 字符，转换成两个A 字符，再转成对应的两个6比特二进制0值，接着转成原始字符之前，需要将最后的两个6比特二进制0值丢弃，因为它们实际上不携带有效信息。 在实际开发过程中，base64一般用于字符和图片的编码，最后，推荐一个在线base64的编码与解码网址：base64编码 转载文章时请注明本文的出处 || 咕噜先森的博客 作者-&gt;@王华港 var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?cb26b3220fad854a3119dd8d11ddc6eb"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })();]]></content>
-      <categories>
-        <category>编程</category>
-      </categories>
-      <tags>
-        <tag>编程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Python实战数据结构——列表/元组]]></title>
     <url>%2F2018%2F03%2F18%2FsingCount%2F</url>
     <content type="text"><![CDATA[Python实战题目比赛评分：校园歌手大奖赛中，每个歌手的得分由10名评委和观众决定，最终得分的规则是去掉10名评委所打分数的一个最高分和一个最低分，再加上所有观众评委分数后的平均值。请编写程序输入某个选手的10个评委分数和观众评分，计算其最后得分。 实战分析1.先接受用户输入的所有数据，存在列表中，此时的数据为字符串，应当转换成float，因为求平均分可能会出现小数。 2.利用Python的内置函数sort()进行排序，这里不用管是升序还是降序。 3.利用pop函数去掉第一个和最后一个数，即达到了去掉最高分和最低分的要求。 4.利用for in 遍历出剩下的所有数，并进行求和sum。 5.将sum与观众的分相加除以总人数便可算出最终得分。 Python代码123456789101112sum=0;inputScore=input("请输入10个分数，以,隔开:");aScore=input("请输入观众评分：")splitScore=inputScore.split(',');intScore = list(map(float, splitScore))# 把字符串转化成floatintScore.sort()intScore.pop();#去除末尾的数intScore.pop(0);#去除最开始的数for x in intScore: sum+=x;avg=(sum+float(aScore))/(len(intScore)+1);print("该选手最终得分：%.2f"%avg) 转载文章时请注明本文的出处 || 咕噜先森的博客 作者-&gt;@王华港 var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?cb26b3220fad854a3119dd8d11ddc6eb"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })();]]></content>
@@ -174,6 +174,17 @@
       </categories>
       <tags>
         <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[base64编码的原理及分析]]></title>
+    <url>%2F2018%2F03%2F18%2Fbase64%2F</url>
+    <content type="text"><![CDATA[1.为什么要使用base64编码因为有些网络传送渠道并不支持所有的字节，例如传统的邮件只支持可见字符的传送，像ASCII码的控制字符就不能通过邮件传送。这样就受到了很大的限制，比如图片二进制流的每个字节不可能全部是可见字符，所以就传送不了。最好的方法就是在不改变传统协议的情况下，开辟一种新的方案来支持二进制文件的传送。把不可见字符用可见字符来表示。而Base64就是一种基于64个可见字符来表示二进制数据的表示方法。 提示：不可见字符其实并不是不显示，只是这些字符在屏幕上显示不出来，比如：换行符、回车、退格等字符。 2.base64编码的原理Base64可以将ASCII字符串或者是二进制编码成只包含A—Z，a—z，0—9，+，/ 这64个字符（ 26个大写字母，26个小写字母，10个数字，1个+，一个 / 刚好64个字符）。 Base64的编码规则是将3个8位字节(3×8=24位)编码成4个6位的字节(4×6=24位)，之后在每个6位字节前面，补充两个0，形成4个8位字节的形式，那么取值范围就变成了0~63。又因为2的6次方等于64，所以每6个位组成一个单元。 下图为base64的字符转换表： 说太多了感觉复杂，直接上例子： 该图片转载自 https://www.jianshu.com/p/dd8bffc91c3d 所以，abc的base64的编码为YWJj；ab的base64编码为YWI=；a的base64编码为YQ==。 若末尾的为0，则对应的是A，但通常都用=来表示。因为 = 字符并不在Base64编码索引表中，其意义在于结束符号，在Base64解码时遇到 = 时即可知道一个Base64编码字符串结束。解码是对编码的逆向操作，但注意一点：对于最后的两个 = 字符，转换成两个A 字符，再转成对应的两个6比特二进制0值，接着转成原始字符之前，需要将最后的两个6比特二进制0值丢弃，因为它们实际上不携带有效信息。 在实际开发过程中，base64一般用于字符和图片的编码，最后，推荐一个在线base64的编码与解码网址：base64编码 转载文章时请注明本文的出处 || 咕噜先森的博客 作者-&gt;@王华港 var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?cb26b3220fad854a3119dd8d11ddc6eb"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })();]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>编程</tag>
       </tags>
   </entry>
   <entry>
