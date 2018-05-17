@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="前端博客,JavaScript,html5,css3,hexo，github，base64编码" />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -88,21 +88,16 @@
 
 
 
-<meta name="description" content="1.为什么要使用base64编码因为有些网络传送渠道并不支持所有的字节，例如传统的邮件只支持可见字符的传送，像ASCII码的控制字符就不能通过邮件传送。这样就受到了很大的限制，比如图片二进制流的每个字节不可能全部是可见字符，所以就传送不了。最好的方法就是在不改变传统协议的情况下，开辟一种新的方案来支持二进制文件的传送。把不可见字符用可见字符来表示。而Base64就是一种基于64个可见字符来表示二进">
-<meta name="keywords" content="前端博客,JavaScript,html5,css3,hexo，github，base64编码">
-<meta property="og:type" content="article">
-<meta property="og:title" content="base64编码的原理及分析">
-<meta property="og:url" content="http://blog.54whg.cn/2018/03/18/base64/index.html">
+<meta name="description" content="专注学习，专注分享！">
+<meta property="og:type" content="website">
+<meta property="og:title" content="咕噜先森的博客">
+<meta property="og:url" content="http://blog.54whg.cn/tags/node/index.html">
 <meta property="og:site_name" content="咕噜先森的博客">
-<meta property="og:description" content="1.为什么要使用base64编码因为有些网络传送渠道并不支持所有的字节，例如传统的邮件只支持可见字符的传送，像ASCII码的控制字符就不能通过邮件传送。这样就受到了很大的限制，比如图片二进制流的每个字节不可能全部是可见字符，所以就传送不了。最好的方法就是在不改变传统协议的情况下，开辟一种新的方案来支持二进制文件的传送。把不可见字符用可见字符来表示。而Base64就是一种基于64个可见字符来表示二进">
+<meta property="og:description" content="专注学习，专注分享！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://blog.54whg.cn/images/base64.png">
-<meta property="og:image" content="http://blog.54whg.cn/images/base64_ex.png">
-<meta property="og:updated_time" content="2018-03-19T06:36:25.756Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="base64编码的原理及分析">
-<meta name="twitter:description" content="1.为什么要使用base64编码因为有些网络传送渠道并不支持所有的字节，例如传统的邮件只支持可见字符的传送，像ASCII码的控制字符就不能通过邮件传送。这样就受到了很大的限制，比如图片二进制流的每个字节不可能全部是可见字符，所以就传送不了。最好的方法就是在不改变传统协议的情况下，开辟一种新的方案来支持二进制文件的传送。把不可见字符用可见字符来表示。而Base64就是一种基于64个可见字符来表示二进">
-<meta name="twitter:image" content="http://blog.54whg.cn/images/base64.png">
+<meta name="twitter:title" content="咕噜先森的博客">
+<meta name="twitter:description" content="专注学习，专注分享！">
 
 
 
@@ -132,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="http://blog.54whg.cn/2018/03/18/base64/"/>
+  <link rel="canonical" href="http://blog.54whg.cn/tags/node/"/>
 
 
 
@@ -147,7 +142,7 @@
   daovoice('update');
   </script>
 
-  <title>base64编码的原理及分析 | 咕噜先森的博客</title>
+  <title>标签: node | 咕噜先森的博客</title>
   
 
 
@@ -176,7 +171,7 @@
     
   
 
-  <div class="container sidebar-position-right page-post-detail">
+  <div class="container sidebar-position-right ">
     <div class="headband"></div>
     <a href="https://github.com/wanghuagang"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -305,325 +300,54 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block tag">
 
-  
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h2>node<small>标签</small>
+        </h2>
+      </div>
 
-  
-  
-  
+      
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.54whg.cn/2018/03/18/base64/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CDU-王华港">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/psb.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="咕噜先森的博客">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h3 class="post-title">
         
+            <a class="post-title-link" href="/2018/05/17/node-mysql/" itemprop="url">
+              
+                <span itemprop="name">封装 | Node连接MySQL并封装其增删查改</span>
+              
+            </a>
         
-          <h2 class="post-title" itemprop="name headline">base64编码的原理及分析</h2>
-        
+      </h3>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T13:17:50+08:00">
-                2018-03-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/编程/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/03/18/base64/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/18/base64/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/03/18/base64/" class="leancloud_visitors" data-flag-title="base64编码的原理及分析">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">热度&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-                 <span>°C</span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  647
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h2 id="1-为什么要使用base64编码"><a href="#1-为什么要使用base64编码" class="headerlink" title="1.为什么要使用base64编码"></a>1.为什么要使用base64编码</h2><p>因为有些网络传送渠道并不支持所有的字节，例如传统的邮件只支持可见字符的传送，像ASCII码的控制字符就不能通过邮件传送。这样就受到了很大的限制，比如图片二进制流的每个字节不可能全部是可见字符，所以就传送不了。最好的方法就是在不改变传统协议的情况下，开辟一种新的方案来支持二进制文件的传送。把不可见字符用可见字符来表示。而Base64就是一种基于64个可见字符来表示二进制数据的表示方法。</p>
-<p><strong>提示：不可见字符其实并不是不显示，只是这些字符在屏幕上显示不出来，比如：换行符、回车、退格等字符。</strong></p>
-<h2 id="2-base64编码的原理"><a href="#2-base64编码的原理" class="headerlink" title="2.base64编码的原理"></a>2.base64编码的原理</h2><p>Base64可以将ASCII字符串或者是二进制编码成只包含A—Z，a—z，0—9，+，/ 这64个字符（ 26个大写字母，26个小写字母，10个数字，1个+，一个 / 刚好64个字符）。</p>
-<p>Base64的编码规则是将3个8位字节(3×8=24位)编码成4个6位的字节(4×6=24位)，之后在每个6位字节前面，补充两个0，形成4个8位字节的形式，那么取值范围就变成了0~63。又因为2的6次方等于64，所以每6个位组成一个单元。</p>
-<p>下图为base64的字符转换表：<br><img src="/images/base64.png" alt="base64转换表"></p>
-<p>说太多了感觉复杂，直接上例子：<br><img src="/images/base64_ex.png" alt="base64举例"></p>
-<blockquote>
-<p>该图片转载自 <a href="https://www.jianshu.com/p/dd8bffc91c3d" target="_blank" rel="noopener">https://www.jianshu.com/p/dd8bffc91c3d</a></p>
-</blockquote>
-<p><strong>所以，abc的base64的编码为YWJj；ab的base64编码为YWI=；a的base64编码为YQ==。</strong>     </p>
-<p>若末尾的为0，则对应的是A，但通常都用=来表示。因为 = 字符并不在Base64编码索引表中，其意义在于结束符号，在Base64解码时遇到 = 时即可知道一个Base64编码字符串结束。<br>解码是对编码的逆向操作，但注意一点：对于最后的两个 = 字符，转换成两个A 字符，再转成对应的两个6比特二进制0值，接着转成原始字符之前，需要将最后的两个6比特二进制0值丢弃，因为它们实际上不携带有效信息。</p>
-<p>在实际开发过程中，base64一般用于字符和图片的编码，最后，推荐一个在线base64的编码与解码网址：<a href="http://base64.xpcha.com/" target="_blank" rel="noopener">base64编码</a></p>
-<blockquote>
-<p>转载文章时请注明本文的出处 || <a href="http://www.blog.54whg.cn" target="_blank" rel="noopener">咕噜先森的博客</a> 作者-&gt;@王华港</p>
-</blockquote>
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?cb26b3220fad854a3119dd8d11ddc6eb";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
-      
-    </div>
-    
-    
-    
-
-    
-      <div>
-        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/images/wechat.jpg" alt="CDU-王华港 wechat" style="width: 200px; max-width: 100%;"/>
-    <div>欢迎关注我的个人微信公众号[咕噜有得聊]，一起学习更多好的文章！</div>
-</div>
-
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2018-05-17T19:02:59+08:00"
+              content="2018-05-17" >
+          05-17
+        </time>
       </div>
-    
 
-    
-      <div>
-        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
-  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>打赏</span>
-  </button>
-  <div id="QR" style="display: none;">
-
-    
-      <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/mm_facetoface_collect_qrcode_1521275422135.png" alt="CDU-王华港 微信支付"/>
-        <p>微信支付</p>
-      </div>
-    
-
-    
-      <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/1521275354514.jpg" alt="CDU-王华港 支付宝"/>
-        <p>支付宝</p>
-      </div>
-    
-
-    
-
-  </div>
-</div>
-
-      </div>
-    
-
-    
-    <div>
-      
-        
-      
-</div>
-      <div>
-  
-    <div>
-    
-        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
-    
-</div>
-  
-</div>
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/编程/" rel="tag"><i class="fa fa-tag"></i> 编程</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/03/17/hexoBlog/" rel="next" title="9步教你搭建个人博客(Hexo+Github)">
-                <i class="fa fa-chevron-left"></i> 9步教你搭建个人博客(Hexo+Github)
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/18/singCount/" rel="prev" title="Python实战数据结构——列表/元组">
-                Python实战数据结构——列表/元组 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-<span class="jiathis_txt">分享到：</span>
-<a class="jiathis_button_fav">收藏夹</a>
-<a class="jiathis_button_copy">复制网址</a>
-<a class="jiathis_button_email">邮件</a>
-<a class="jiathis_button_weixin">微信</a>
-<a class="jiathis_button_qzone">QQ空间</a>
-<a class="jiathis_button_tqq">腾讯微博</a>
-<a class="jiathis_button_douban">豆瓣</a>
-<a class="jiathis_button_share">一键分享</a>
-
-<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-<a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-var jiathis_config={
-  data_track_clickback:true,
-  summary:"",
-  shortUrl:false,
-  hideMore:false
-}
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
-<!-- JiaThis Button END -->
       
     </div>
+
   </div>
+  
+  
+  
+
+  
 
 
           </div>
@@ -631,13 +355,6 @@ var jiathis_config={
 
 
           
-
-  
-    <div class="comments" id="comments">
-    </div>
-  
-
-
 
         </div>
         
@@ -658,17 +375,8 @@ var jiathis_config={
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -762,22 +470,6 @@ var jiathis_config={
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-为什么要使用base64编码"><span class="nav-number">1.</span> <span class="nav-text">1.为什么要使用base64编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-base64编码的原理"><span class="nav-number">2.</span> <span class="nav-text">2.base64编码的原理</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -928,10 +620,6 @@ var jiathis_config={
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 

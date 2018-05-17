@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="前端博客,JavaScript,html5,css3,hexo，github，base64编码" />
+  <meta name="keywords" content="node，node连接mysql，node封装mysql" />
 
 
 
@@ -88,21 +88,20 @@
 
 
 
-<meta name="description" content="1.为什么要使用base64编码因为有些网络传送渠道并不支持所有的字节，例如传统的邮件只支持可见字符的传送，像ASCII码的控制字符就不能通过邮件传送。这样就受到了很大的限制，比如图片二进制流的每个字节不可能全部是可见字符，所以就传送不了。最好的方法就是在不改变传统协议的情况下，开辟一种新的方案来支持二进制文件的传送。把不可见字符用可见字符来表示。而Base64就是一种基于64个可见字符来表示二进">
-<meta name="keywords" content="前端博客,JavaScript,html5,css3,hexo，github，base64编码">
+<meta name="description" content="Node连接Mysql说到node，可能大家会想到MOngoDB作为数据库，这里将会介绍node与mysql的连接，并分享了封装好的实例代码，在项目开发中可直接使用。下一篇博客将会讲node连接MongoDB。">
+<meta name="keywords" content="node，node连接mysql，node封装mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="base64编码的原理及分析">
-<meta property="og:url" content="http://blog.54whg.cn/2018/03/18/base64/index.html">
+<meta property="og:title" content="封装 | Node连接MySQL并封装其增删查改">
+<meta property="og:url" content="http://blog.54whg.cn/2018/05/17/node-mysql/index.html">
 <meta property="og:site_name" content="咕噜先森的博客">
-<meta property="og:description" content="1.为什么要使用base64编码因为有些网络传送渠道并不支持所有的字节，例如传统的邮件只支持可见字符的传送，像ASCII码的控制字符就不能通过邮件传送。这样就受到了很大的限制，比如图片二进制流的每个字节不可能全部是可见字符，所以就传送不了。最好的方法就是在不改变传统协议的情况下，开辟一种新的方案来支持二进制文件的传送。把不可见字符用可见字符来表示。而Base64就是一种基于64个可见字符来表示二进">
+<meta property="og:description" content="Node连接Mysql说到node，可能大家会想到MOngoDB作为数据库，这里将会介绍node与mysql的连接，并分享了封装好的实例代码，在项目开发中可直接使用。下一篇博客将会讲node连接MongoDB。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://blog.54whg.cn/images/base64.png">
-<meta property="og:image" content="http://blog.54whg.cn/images/base64_ex.png">
-<meta property="og:updated_time" content="2018-03-19T06:36:25.756Z">
+<meta property="og:image" content="http://blog.54whg.cn/images/node-mysql.png">
+<meta property="og:updated_time" content="2018-05-17T03:35:26.800Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="base64编码的原理及分析">
-<meta name="twitter:description" content="1.为什么要使用base64编码因为有些网络传送渠道并不支持所有的字节，例如传统的邮件只支持可见字符的传送，像ASCII码的控制字符就不能通过邮件传送。这样就受到了很大的限制，比如图片二进制流的每个字节不可能全部是可见字符，所以就传送不了。最好的方法就是在不改变传统协议的情况下，开辟一种新的方案来支持二进制文件的传送。把不可见字符用可见字符来表示。而Base64就是一种基于64个可见字符来表示二进">
-<meta name="twitter:image" content="http://blog.54whg.cn/images/base64.png">
+<meta name="twitter:title" content="封装 | Node连接MySQL并封装其增删查改">
+<meta name="twitter:description" content="Node连接Mysql说到node，可能大家会想到MOngoDB作为数据库，这里将会介绍node与mysql的连接，并分享了封装好的实例代码，在项目开发中可直接使用。下一篇博客将会讲node连接MongoDB。">
+<meta name="twitter:image" content="http://blog.54whg.cn/images/node-mysql.png">
 
 
 
@@ -132,7 +131,7 @@
 
 
 
-  <link rel="canonical" href="http://blog.54whg.cn/2018/03/18/base64/"/>
+  <link rel="canonical" href="http://blog.54whg.cn/2018/05/17/node-mysql/"/>
 
 
 
@@ -147,7 +146,7 @@
   daovoice('update');
   </script>
 
-  <title>base64编码的原理及分析 | 咕噜先森的博客</title>
+  <title>封装 | Node连接MySQL并封装其增删查改 | 咕噜先森的博客</title>
   
 
 
@@ -319,7 +318,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://blog.54whg.cn/2018/03/18/base64/">
+    <link itemprop="mainEntityOfPage" href="http://blog.54whg.cn/2018/05/17/node-mysql/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="CDU-王华港">
@@ -336,7 +335,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">base64编码的原理及分析</h2>
+          <h2 class="post-title" itemprop="name headline">封装 | Node连接MySQL并封装其增删查改</h2>
         
 
         <div class="post-meta">
@@ -348,8 +347,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-18T13:17:50+08:00">
-                2018-03-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-17T19:02:59+08:00">
+                2018-05-17
               </time>
             
 
@@ -371,8 +370,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/编程/" itemprop="url" rel="index">
-                    <span itemprop="name">编程</span>
+                  <a href="/categories/node/" itemprop="url" rel="index">
+                    <span itemprop="name">node</span>
                   </a>
                 </span>
 
@@ -389,8 +388,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/03/18/base64/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/03/18/base64/" itemprop="commentCount"></span>
+                <a href="/2018/05/17/node-mysql/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2018/05/17/node-mysql/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -398,7 +397,7 @@
 
           
           
-             <span id="/2018/03/18/base64/" class="leancloud_visitors" data-flag-title="base64编码的原理及分析">
+             <span id="/2018/05/17/node-mysql/" class="leancloud_visitors" data-flag-title="封装 | Node连接MySQL并封装其增删查改">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -424,7 +423,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  647
+                  872
                 </span>
               
 
@@ -440,7 +439,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  4
                 </span>
               
             </div>
@@ -461,21 +460,28 @@
       
 
       
-        <h2 id="1-为什么要使用base64编码"><a href="#1-为什么要使用base64编码" class="headerlink" title="1.为什么要使用base64编码"></a>1.为什么要使用base64编码</h2><p>因为有些网络传送渠道并不支持所有的字节，例如传统的邮件只支持可见字符的传送，像ASCII码的控制字符就不能通过邮件传送。这样就受到了很大的限制，比如图片二进制流的每个字节不可能全部是可见字符，所以就传送不了。最好的方法就是在不改变传统协议的情况下，开辟一种新的方案来支持二进制文件的传送。把不可见字符用可见字符来表示。而Base64就是一种基于64个可见字符来表示二进制数据的表示方法。</p>
-<p><strong>提示：不可见字符其实并不是不显示，只是这些字符在屏幕上显示不出来，比如：换行符、回车、退格等字符。</strong></p>
-<h2 id="2-base64编码的原理"><a href="#2-base64编码的原理" class="headerlink" title="2.base64编码的原理"></a>2.base64编码的原理</h2><p>Base64可以将ASCII字符串或者是二进制编码成只包含A—Z，a—z，0—9，+，/ 这64个字符（ 26个大写字母，26个小写字母，10个数字，1个+，一个 / 刚好64个字符）。</p>
-<p>Base64的编码规则是将3个8位字节(3×8=24位)编码成4个6位的字节(4×6=24位)，之后在每个6位字节前面，补充两个0，形成4个8位字节的形式，那么取值范围就变成了0~63。又因为2的6次方等于64，所以每6个位组成一个单元。</p>
-<p>下图为base64的字符转换表：<br><img src="/images/base64.png" alt="base64转换表"></p>
-<p>说太多了感觉复杂，直接上例子：<br><img src="/images/base64_ex.png" alt="base64举例"></p>
-<blockquote>
-<p>该图片转载自 <a href="https://www.jianshu.com/p/dd8bffc91c3d" target="_blank" rel="noopener">https://www.jianshu.com/p/dd8bffc91c3d</a></p>
-</blockquote>
-<p><strong>所以，abc的base64的编码为YWJj；ab的base64编码为YWI=；a的base64编码为YQ==。</strong>     </p>
-<p>若末尾的为0，则对应的是A，但通常都用=来表示。因为 = 字符并不在Base64编码索引表中，其意义在于结束符号，在Base64解码时遇到 = 时即可知道一个Base64编码字符串结束。<br>解码是对编码的逆向操作，但注意一点：对于最后的两个 = 字符，转换成两个A 字符，再转成对应的两个6比特二进制0值，接着转成原始字符之前，需要将最后的两个6比特二进制0值丢弃，因为它们实际上不携带有效信息。</p>
-<p>在实际开发过程中，base64一般用于字符和图片的编码，最后，推荐一个在线base64的编码与解码网址：<a href="http://base64.xpcha.com/" target="_blank" rel="noopener">base64编码</a></p>
-<blockquote>
-<p>转载文章时请注明本文的出处 || <a href="http://www.blog.54whg.cn" target="_blank" rel="noopener">咕噜先森的博客</a> 作者-&gt;@王华港</p>
-</blockquote>
+        <p><img src="/images/node-mysql.png" alt=""></p>
+<h3 id="Node连接Mysql"><a href="#Node连接Mysql" class="headerlink" title="Node连接Mysql"></a>Node连接Mysql</h3><p>说到node，可能大家会想到MOngoDB作为数据库，这里将会介绍node与mysql的连接，并分享了封装好的实例代码，在项目开发中可直接使用。下一篇博客将会讲node连接MongoDB。<br><a id="more"></a></p>
+<h3 id="安装Mysql模块"><a href="#安装Mysql模块" class="headerlink" title="安装Mysql模块"></a>安装Mysql模块</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> mysql</span><br></pre></td></tr></table></figure>
+<h3 id="连接Mysql"><a href="#连接Mysql" class="headerlink" title="连接Mysql"></a>连接Mysql</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> connection = mysql.createConnection(&#123;</span><br><span class="line">    host : <span class="string">'localhost'</span>,</span><br><span class="line">    user : <span class="string">'root'</span>, </span><br><span class="line">    password : <span class="string">'password'</span>,</span><br><span class="line">    database : <span class="string">'test'</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">connection.connect(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (err) &#123;</span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">'连接失败: '</span> + err.stack);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'连接成功 id '</span> + connection.threadId);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>host：连接的服务器<br>user：数据库用户名<br>password：设置的MySQL密码<br>database： 要连接的数据库名</p>
+<h3 id="常用的SQL语句"><a href="#常用的SQL语句" class="headerlink" title="常用的SQL语句"></a>常用的SQL语句</h3><p>具体的使用这里不做详细说明，包括select、insert、update、delete等语句。</p>
+<h3 id="Node操作Mysql"><a href="#Node操作Mysql" class="headerlink" title="Node操作Mysql"></a>Node操作Mysql</h3><p>查询</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">connection.<span class="keyword">query</span>('SELECT * FROM t_user WHERE username = <span class="string">"whg"</span>', (<span class="keyword">err</span>, results, fields) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">err</span>)&#123;</span><br><span class="line">        console.<span class="built_in">log</span>(<span class="keyword">err</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    console.<span class="built_in">log</span>(results);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>添加</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">connection.query(<span class="string">'INSERT INTO t_user(username, pass) VALUES(?, ?)'</span>,[<span class="string">'whg'</span>, <span class="string">'123'</span>], <span class="function"><span class="params">(err, results)</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(results);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>删除</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">connection.query(<span class="string">'DELETE FROM t_user  WHERE id = 1'</span>, <span class="function"><span class="params">(err, results)</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(err);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(results);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>更新</p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">connection.<span class="keyword">query</span>('<span class="keyword">UPDATE</span> t_user <span class="keyword">SET</span> pass = <span class="string">"321"</span> WHERE username = <span class="string">"whg"</span>', (<span class="keyword">err</span>, results) =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">err</span>)&#123;</span><br><span class="line">        console.<span class="built_in">log</span>(<span class="keyword">err</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    console.<span class="built_in">log</span>(results);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>结束连接</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">connection.<span class="keyword">end</span>(<span class="function"><span class="keyword">function</span><span class="params">(err)</span> <span class="comment">&#123;</span></span></span><br><span class="line"><span class="function"><span class="comment">  </span></span></span><br><span class="line"><span class="function"><span class="comment">&#125;</span>);</span></span><br><span class="line">connection.destroy();</span><br></pre></td></tr></table></figure>
+<p>这两种都行，第二种是强制结束。</p>
+<h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><p>说了这么多，感觉操作起来还是挺简单的。在实际开发中，我们想要操作起来更方便，那就让我们自己封装一下来使用。直接上代码：</p>
+<h5 id="封装好的代码"><a href="#封装好的代码" class="headerlink" title="封装好的代码"></a>封装好的代码</h5><p>1.数据库配置文件<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//配置链接数据库参数</span></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    <span class="string">host :</span> <span class="string">'localhost'</span>,</span><br><span class="line">    <span class="string">port :</span> <span class="number">3306</span>,<span class="comment">//端口号</span></span><br><span class="line">    <span class="string">database :</span> <span class="string">'nodetest'</span>,<span class="comment">//数据库名</span></span><br><span class="line">    <span class="string">user :</span> <span class="string">'root'</span>,<span class="comment">//数据库用户名</span></span><br><span class="line">    <span class="string">password :</span> <span class="string">'123456'</span><span class="comment">//数据库密码</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>2.封装、暴露方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> mysql = <span class="built_in">require</span>(<span class="string">'mysql'</span>);<span class="comment">//引入mysql模块</span></span><br><span class="line"><span class="keyword">var</span> databaseConfig = <span class="built_in">require</span>(<span class="string">'./mysql.config'</span>);  <span class="comment">//引入数据库配置模块中的数据</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//向外暴露方法</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    query : <span class="function"><span class="keyword">function</span>(<span class="params">sql,params,callback</span>)</span>&#123;</span><br><span class="line">        <span class="comment">//每次使用的时候需要创建链接，数据操作完成之后要关闭连接</span></span><br><span class="line">        <span class="keyword">var</span> connection = mysql.createConnection(databaseConfig);        </span><br><span class="line">        connection.connect(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(err)&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'数据库链接失败'</span>);</span><br><span class="line">                <span class="keyword">throw</span> err;</span><br><span class="line">            &#125;</span><br><span class="line">         <span class="comment">//开始数据操作</span></span><br><span class="line">         <span class="comment">//传入三个参数，第一个参数sql语句，第二个参数sql语句中需要的数据，第三个参数回调函数</span></span><br><span class="line">        connection.query( sql, params, <span class="function"><span class="keyword">function</span>(<span class="params">err,results,fields </span>)</span>&#123;</span><br><span class="line">           <span class="keyword">if</span>(err)&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'数据操作失败'</span>);</span><br><span class="line">                <span class="keyword">throw</span> err;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//将查询出来的数据返回给回调函数</span></span><br><span class="line">            callback &amp;&amp; callback(results, fields);</span><br><span class="line">            <span class="comment">//results作为数据操作后的结果，fields作为数据库连接的一些字段</span></span><br><span class="line">            <span class="comment">//停止链接数据库，必须再查询语句后，要不然一调用这个方法，就直接停止链接，数据操作就会失败</span></span><br><span class="line">             connection.end(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</span><br><span class="line">                  <span class="keyword">if</span>(err)&#123;</span><br><span class="line">                      <span class="built_in">console</span>.log(<span class="string">'关闭数据库连接失败！'</span>);</span><br><span class="line">                      <span class="keyword">throw</span> err;</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;);</span><br><span class="line">           &#125;);</span><br><span class="line">       &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>3.演示实例<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> db=<span class="built_in">require</span>(<span class="string">'../model/mysql.js'</span>);</span><br><span class="line"><span class="comment">// 查询实例</span></span><br><span class="line">db.query(<span class="string">'select * from t_user'</span>, [],<span class="function"><span class="keyword">function</span>(<span class="params">result,fields</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'查询结果：'</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(result);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">//添加实例</span></span><br><span class="line"><span class="keyword">var</span>  addSql = <span class="string">'INSERT INTO websites(username,password) VALUES(?,?)'</span>;</span><br><span class="line"><span class="keyword">var</span>  addSqlParams =[<span class="string">'咕噜先森'</span>, <span class="string">'666'</span>];</span><br><span class="line">db.query(addSql,addSqlParams,<span class="function"><span class="keyword">function</span>(<span class="params">result,fields</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'添加成功'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><p>想要使用的朋友，可以直接把封装好的两个文件copy到项目中，改一下配置就可以使用了，大大提高开发效率。下一篇将会分享Node连接MongoDB。</p>
 <script>
 var _hmt = _hmt || [];
 (function() {
@@ -537,6 +543,35 @@ var _hmt = _hmt || [];
     <div>
       
         
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2018/05/17/node-mysql/">封装 | Node连接MySQL并封装其增删查改</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 CDU-王华港 的个人博客">CDU-王华港</a></p>
+  <p><span>发布时间:</span>2018年05月17日 - 19:05</p>
+  <p><span>最后更新:</span>2018年05月17日 - 11:05</p>
+  <p><span>原始链接:</span><a href="/2018/05/17/node-mysql/" title="封装 | Node连接MySQL并封装其增删查改">http://blog.54whg.cn/2018/05/17/node-mysql/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://blog.54whg.cn/2018/05/17/node-mysql/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
       
 </div>
       <div>
@@ -552,7 +587,7 @@ var _hmt = _hmt || [];
       
         <div class="post-tags">
           
-            <a href="/tags/编程/" rel="tag"><i class="fa fa-tag"></i> 编程</a>
+            <a href="/tags/node/" rel="tag"><i class="fa fa-tag"></i> node</a>
           
         </div>
       
@@ -565,8 +600,8 @@ var _hmt = _hmt || [];
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/17/hexoBlog/" rel="next" title="9步教你搭建个人博客(Hexo+Github)">
-                <i class="fa fa-chevron-left"></i> 9步教你搭建个人博客(Hexo+Github)
+              <a href="/2018/05/15/webService/" rel="next" title="【零开始】怎样购买、配置服务器及发布网站（页）？">
+                <i class="fa fa-chevron-left"></i> 【零开始】怎样购买、配置服务器及发布网站（页）？
               </a>
             
           </div>
@@ -574,10 +609,6 @@ var _hmt = _hmt || [];
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/18/singCount/" rel="prev" title="Python实战数据结构——列表/元组">
-                Python实战数据结构——列表/元组 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -772,7 +803,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-为什么要使用base64编码"><span class="nav-number">1.</span> <span class="nav-text">1.为什么要使用base64编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-base64编码的原理"><span class="nav-number">2.</span> <span class="nav-text">2.base64编码的原理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Node连接Mysql"><span class="nav-number">1.</span> <span class="nav-text">Node连接Mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Mysql模块"><span class="nav-number">2.</span> <span class="nav-text">安装Mysql模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接Mysql"><span class="nav-number">3.</span> <span class="nav-text">连接Mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的SQL语句"><span class="nav-number">4.</span> <span class="nav-text">常用的SQL语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Node操作Mysql"><span class="nav-number">5.</span> <span class="nav-text">Node操作Mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#封装"><span class="nav-number">6.</span> <span class="nav-text">封装</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#封装好的代码"><span class="nav-number">6.0.1.</span> <span class="nav-text">封装好的代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结束"><span class="nav-number">7.</span> <span class="nav-text">结束</span></a></li></ol></div>
             
 
           </div>
