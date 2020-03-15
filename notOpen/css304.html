@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="前端面试经历，前端实习面试经历，腾讯春季校招前端实习生面试经历" />
+  <meta name="keywords" content="前端博客,CSS3重要知识点总结，css3,CSS3新特性" />
 
 
 
@@ -88,18 +88,20 @@
 
 
 
-<meta name="description" content="前言很久没有更博客了，因为最近太忙了，事情太多就没怎么写了。如果有相关的问题可在下面评论区留言，很乐意为你解答。 4月5日参加的腾讯的前端实习生的笔试，当时因为其他的事情，导致准备不充分，做得不是很好，所以做完笔试感觉已经凉了。加之后面学院科创室办比赛的事情以及个人评选十佳优秀团员的事情，就忙得已经淡淡忘了这件事了，也就没有去准备面试了。 4月10日，这两天一直在忙着整理十佳团员的资料，写个人简介">
-<meta name="keywords" content="前端面试经历，前端实习面试经历，腾讯春季校招前端实习生面试经历">
-<meta property="og:type" content="article">
-<meta property="og:title" content="面经 | 腾讯春季校招前端实习生面试经历 | 感觉凉了">
-<meta property="og:url" content="http://www.wanghuagang.cn/2018/04/11/TencentView/index.html">
+<meta name="description" content="1.margin和padding分别适合什么场景使用？何时使用margin：1.需要在border外侧添加空白2.空白处不需要背景色3.上下相连的两个盒子之间的空白，需要相互抵消时。何时使用padding：1.需要在border内侧添加空白2.空白处需要背景颜色3.上下相连的两个盒子的空白，希望为两者之和。 兼容性的问题：在IE5 IE6中，为float的盒子指定margin时，左侧的margi">
+<meta name="keywords" content="前端博客,CSS3重要知识点总结，css3,CSS3新特性">
+<meta property="og:type" content="website">
+<meta property="og:title" content="【每日9个】CSS3重要知识点总结（四）">
+<meta property="og:url" content="http://www.wanghuagang.cn/notOpen/css304.html">
 <meta property="og:site_name" content="咕噜先森的博客">
-<meta property="og:description" content="前言很久没有更博客了，因为最近太忙了，事情太多就没怎么写了。如果有相关的问题可在下面评论区留言，很乐意为你解答。 4月5日参加的腾讯的前端实习生的笔试，当时因为其他的事情，导致准备不充分，做得不是很好，所以做完笔试感觉已经凉了。加之后面学院科创室办比赛的事情以及个人评选十佳优秀团员的事情，就忙得已经淡淡忘了这件事了，也就没有去准备面试了。 4月10日，这两天一直在忙着整理十佳团员的资料，写个人简介">
+<meta property="og:description" content="1.margin和padding分别适合什么场景使用？何时使用margin：1.需要在border外侧添加空白2.空白处不需要背景色3.上下相连的两个盒子之间的空白，需要相互抵消时。何时使用padding：1.需要在border内侧添加空白2.空白处需要背景颜色3.上下相连的两个盒子的空白，希望为两者之和。 兼容性的问题：在IE5 IE6中，为float的盒子指定margin时，左侧的margi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-12T04:24:56.000Z">
+<meta property="og:image" content="http://www.wanghuagang.cn/images/pic/09.jpg">
+<meta property="og:updated_time" content="2020-03-15T13:14:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="面经 | 腾讯春季校招前端实习生面试经历 | 感觉凉了">
-<meta name="twitter:description" content="前言很久没有更博客了，因为最近太忙了，事情太多就没怎么写了。如果有相关的问题可在下面评论区留言，很乐意为你解答。 4月5日参加的腾讯的前端实习生的笔试，当时因为其他的事情，导致准备不充分，做得不是很好，所以做完笔试感觉已经凉了。加之后面学院科创室办比赛的事情以及个人评选十佳优秀团员的事情，就忙得已经淡淡忘了这件事了，也就没有去准备面试了。 4月10日，这两天一直在忙着整理十佳团员的资料，写个人简介">
+<meta name="twitter:title" content="【每日9个】CSS3重要知识点总结（四）">
+<meta name="twitter:description" content="1.margin和padding分别适合什么场景使用？何时使用margin：1.需要在border外侧添加空白2.空白处不需要背景色3.上下相连的两个盒子之间的空白，需要相互抵消时。何时使用padding：1.需要在border内侧添加空白2.空白处需要背景颜色3.上下相连的两个盒子的空白，希望为两者之和。 兼容性的问题：在IE5 IE6中，为float的盒子指定margin时，左侧的margi">
+<meta name="twitter:image" content="http://www.wanghuagang.cn/images/pic/09.jpg">
 
 
 
@@ -129,7 +131,7 @@
 
 
 
-  <link rel="canonical" href="http://www.wanghuagang.cn/2018/04/11/TencentView/"/>
+  <link rel="canonical" href="http://www.wanghuagang.cn/notOpen/css304.html"/>
 
 
 
@@ -144,7 +146,7 @@
   daovoice('update');
   </script>
 
-  <title>面经 | 腾讯春季校招前端实习生面试经历 | 感觉凉了 | 咕噜先森的博客</title>
+  <title>【每日9个】CSS3重要知识点总结（四） | 咕噜先森的博客</title>
   
 
 
@@ -314,188 +316,36 @@
 
   <div id="posts" class="posts-expand">
     
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.wanghuagang.cn/2018/04/11/TencentView/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="CDU-王华港">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/psb.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="咕噜先森的博客">
-    </span>
-
     
+    
+    <div class="post-block page">
       <header class="post-header">
 
-        
-        
-          <h2 class="post-title" itemprop="name headline">面经 | 腾讯春季校招前端实习生面试经历 | 感觉凉了</h2>
-        
+	<h2 class="post-title" itemprop="name headline">【每日9个】CSS3重要知识点总结（四）</h2>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-11T21:02:42+08:00">
-                2018-04-11
-              </time>
-            
 
-            
 
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/面经/" itemprop="url" rel="index">
-                    <span itemprop="name">面经</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/04/11/TencentView/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2018/04/11/TencentView/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/2018/04/11/TencentView/" class="leancloud_visitors" data-flag-title="面经 | 腾讯春季校招前端实习生面试经历 | 感觉凉了">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">热度&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-                 <span>°C</span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,738
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+</header>
 
       
       
-
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>很久没有更博客了，因为最近太忙了，事情太多就没怎么写了。如果有相关的问题可在下面评论区留言，很乐意为你解答。</p>
-<p>4月5日参加的腾讯的前端实习生的笔试，当时因为其他的事情，导致准备不充分，做得不是很好，所以做完笔试感觉已经凉了。加之后面学院科创室办比赛的事情以及个人评选十佳优秀团员的事情，就忙得已经淡淡忘了这件事了，也就没有去准备面试了。</p>
-<p>4月10日，这两天一直在忙着整理十佳团员的资料，写个人简介，个人事迹，做宣讲PPT等，今天下午约好了学院新闻中心得帮我拍30秒的宣讲视频。所以一下午都在准备拍视频以及拍视频。下午4点过拍完了，回到工作室继续准备材料，做PPT，突然收到一封邮件，来自于腾讯校招。打开一看，自己都惊了，叫我第二天就去成都某酒店面试。一阵窃喜，但也很忧伤，这么久一直都没有准备面试，没有准备好。现在就很纠结明天到底去不去了，经过朋友、同学、家人的鼓励下，还是选择了去参加面试，就当去体验一次真正的面试（PS：之前从来没有参加过公司面试，腾讯是我第一次面试的公司）。好吧，放下手里的一切事情吧。在食堂吃了晚饭，就开始刷题复习了。</p>
-<p>刷了两三个小时，晚上回寝室了，再看了一会儿，本来想多看一会儿，因为学校11点半会停电，然后就洗了个澡就上床睡觉了。但是在睡觉之前，做了一件事，那就是设了一个闹钟，7点钟，明天早上早点起来刷题吧。</p>
-<p>第二天来到工作室，还没有两个人呢，就开始刷题吧，网上找的一些前端面试题和一些面经。想了想，可能看不完了，去找班主任请个假吧，下午一二节课就不去上课了，好好刷题吧（PS：上午三四节课在教室里面用手机刷，发现好像效果不大。）下午一二节同学都去上课了，我就留在工作室刷题，越刷越紧张，因为重来没有参加过公司面试。好吧，下午4点钟，坐地铁出发吧，去面试的酒店。原计划在地铁上再刷题，但是发现越到面试越浪。就像小时候一样，小考小耍，大考大耍。哎，在地铁上一个题也没看，就拿着自己的彩印的简历，刷刷新闻吧。一个小时左右，到了某酒店。到了指定的位置，发现早早就有人到了面试了，我打开邮件再看，写的是 请带好简历于4月11日18:00前往某酒店参加面试，我一直以为是18：00开始面试，原来这一整天都在面试。用微信扫完码签到完成，就慢慢等着面试吧。等了接近一个小时，广播和手机短信和微信终于通知我到某个房间去面试了。</p>
-<h3 id="正式开始"><a href="#正式开始" class="headerlink" title="正式开始"></a>正式开始</h3><p>第一次参加面试，还是大厂面试，虽然感觉已经凉了。全程大概40分钟左右，在一个五星级酒店的一个房间里，一对一的面试，面试官看起来还不错。<br>一进去面试官问我大学在哪个位置？然后就他到他们招的是腾讯云服务的前端开发，刚好我大一的时候到现在一直在用腾讯云服务器。之后看了一下我的简历，算是正式开始了吧。</p>
-<ul>
-<li>自我介绍，大概讲了一下自己的经历以及做过的项目和编写的书。（大一到现在的经历，大概用了7、8分钟）</li>
-<li>你从做过的事（学长课堂：老生带新生）中最大的收获是什么？（分享中学习，学习中分享）</li>
-<li>说了自己的项目，采用前后端分离做的，为什么逻辑业务都在前端做？（因为更熟悉js，虽然Node也是用js写）</li>
-<li>如何解决跨域问题？（自己用过的是jsonp，其他的不是很了解）</li>
-<li>对http有什么了解？（说了说常见的状态码和TCP的三次握手，以及和UDP的区别）</li>
-<li>vue为什么要使用虚拟DOM？（想必js操作DOMM更能够优化性能，减少资源的请求）</li>
-<li>为什么js操作DOM更消耗资源呢？（只是了解过）</li>
-<li>有没有看过vue的源码？（没怎么了解过）</li>
-<li>做一道题：判断栈是在哪个容器？（很懵，没看懂题，琢磨了几分钟，面试官提示了pop和push，原来是考栈的先进后出嘛，但是代码没写出来，估计到这里已经凉了）</li>
-<li>说说你这个【搜购】项目具体是怎样的以及主要用了哪些技术？（大体介绍了这个项目，以及自己想完善这个项目的想法）</li>
-<li>顺便说到了另一个【商品收银系统】，讲了一下自己做的时候的难点？（这个问题就是下面一个问题）</li>
-<li>说了一下echarts，以及返回数据显示的坑。（同步与异步造成的问题）</li>
-<li>最后问了一下，你们写的这本书是在校内使用还是要出版发行？（说了一下要出版）</li>
-<li>最后，你有什么问题想问我吗？（以下两个问题）</li>
-<li>1.现在主要学哪一个技术栈好一点？（自己学的是vue，面试官说是根据具体的使用场景进行使用）</li>
-<li>2.对于新出来的东西，是在刚出来的时候就接触，还是在等它成熟了再去使用？（给面试官提了一下刚出来的【快应用】，结果他不知道这个东西。他举例说了一下react native刚出来也不稳定，但是又能够适用的地方，还是会去使用它。）</li>
-</ul>
-<p>OK，面试官：感谢你的时间（顿时心里感觉又凉凉了），收拾简历准备走了，然后叫我把简历留下，不要带走，然后我就直接走了。</p>
-<h3 id="感受"><a href="#感受" class="headerlink" title="感受"></a>感受</h3><p>面试官问项目比较多，注重基础与底层，不要只是会运用，还要知道为什么它能够这样使用，多看看框架的源码。第一次参加面试，还是大厂面试，虽然感觉已经凉了，但是还是一次很不错的体验与经历吧，为自己后面的秋招攒人品吧。</p>
+      <div class="post-body">
+        
+        
+          <p><img src="/images/pic/09.jpg" alt=""></p>
+<h2 id="1-margin和padding分别适合什么场景使用？"><a href="#1-margin和padding分别适合什么场景使用？" class="headerlink" title="1.margin和padding分别适合什么场景使用？"></a>1.margin和padding分别适合什么场景使用？</h2><p>何时使用margin：<br>1.需要在border外侧添加空白<br>2.空白处不需要背景色<br>3.上下相连的两个盒子之间的空白，需要相互抵消时。<br>何时使用padding：<br>1.需要在border内侧添加空白<br>2.空白处需要背景颜色<br>3.上下相连的两个盒子的空白，希望为两者之和。</p>
+<p>兼容性的问题：在IE5 IE6中，为float的盒子指定margin时，左侧的margin可能会变成两倍的宽度。通过改变padding或者指定盒子的display：inline解决。</p>
+<h2 id="2-元素竖向的百分比设定是相对于容器的高度吗？"><a href="#2-元素竖向的百分比设定是相对于容器的高度吗？" class="headerlink" title="2.元素竖向的百分比设定是相对于容器的高度吗？"></a>2.元素竖向的百分比设定是相对于容器的高度吗？</h2><p>当按百分比设定一个元素的宽度时，它是相对于父容器的<strong>宽度</strong>计算的，但是，对于一些表示竖向距离的属性，例如 padding-top , padding-bottom , margin-top , margin-bottom 等，当按百分比设定它们时，依据的也是父容器的<strong>宽度</strong>，而不是高度。</p>
+<h2 id="3-全屏滚动的原理是什么？用到了CSS的哪些属性？"><a href="#3-全屏滚动的原理是什么？用到了CSS的哪些属性？" class="headerlink" title="3.全屏滚动的原理是什么？用到了CSS的哪些属性？"></a>3.全屏滚动的原理是什么？用到了CSS的哪些属性？</h2><p>1.原理：有点类似于轮播，整体的元素一直排列下去，假设有5个需要展示的全屏页面，那么高度是500%，只是展示100%，剩下的可以通过transform进行y轴定位，也可以通过margin-top实现<br>2.overflow：hidden；transition：all 1000ms ease；</p>
+<h2 id="4-什么是响应式设计？响应式设计的基本原理是什么？如何兼容低版本的IE？"><a href="#4-什么是响应式设计？响应式设计的基本原理是什么？如何兼容低版本的IE？" class="headerlink" title="4.什么是响应式设计？响应式设计的基本原理是什么？如何兼容低版本的IE？"></a>4.什么是响应式设计？响应式设计的基本原理是什么？如何兼容低版本的IE？</h2><p>响应式网站设计是一个网站能够兼容多个终端，而不是为每一个终端做一个特定的版本。<br>基本原理是通过媒体查询检测不同的设备屏幕尺寸做处理。<br>页面头部必须有meta声明的viewport。<br><code>&lt;meta name=&quot;’viewport’&quot; content=&quot;”width=device-width,&quot; initial-scale=&quot;1.&quot; maximum-scale=&quot;1,user-scalable=no”&quot;/&gt;</code></p>
+<h2 id="5-视差滚动效果？"><a href="#5-视差滚动效果？" class="headerlink" title="5.视差滚动效果？"></a>5.视差滚动效果？</h2><p>视差滚动通过在网页向下滚动的时候，控制背景的移动速度比前景的移动速度慢来创建出令人惊叹的3D效果。<br>1.CSS3实现<br>优点：开发时间短、性能和开发效率比较好，缺点是不能兼容到低版本的浏览器<br>2.jQuery实现<br>通过控制不同层滚动速度，计算每一层的时间，控制滚动效果。<br>优点：能兼容到各个版本的，效果可控性好<br>缺点：开发起来对制作者要求高<br>3.插件实现方式<br>例如：parallax-scrolling，兼容性十分好,<a href="http://www.bluesdream.com/case/jquery/jquery-parallax-scrolling/" target="_blank" rel="noopener">在线demo</a></p>
+<h2 id="6-before-和-after中双冒号和单冒号有什么区别？解释一下这2个伪元素的作用"><a href="#6-before-和-after中双冒号和单冒号有什么区别？解释一下这2个伪元素的作用" class="headerlink" title="6.::before 和 :after中双冒号和单冒号有什么区别？解释一下这2个伪元素的作用"></a>6.::before 和 :after中双冒号和单冒号有什么区别？解释一下这2个伪元素的作用</h2><p>1.单冒号(:)用于CSS3伪类，双冒号(::)用于CSS3伪元素。<br>2.::before就是以一个子元素的存在，定义在元素主体内容之前的一个伪元素。并不存在于dom之中，只存在在页面之中。<br>:before 和 :after 这两个伪元素，是在CSS2.1里新出现的。起初，伪元素的前缀使用的是单冒号语法，但随着Web的进化，在CSS3的规范里，伪元素的语法被修改成使用双冒号，成为::before ::after</p>
+<h2 id="7-你对line-height是如何理解的？"><a href="#7-你对line-height是如何理解的？" class="headerlink" title="7.你对line-height是如何理解的？"></a>7.你对line-height是如何理解的？</h2><p>行高是指一行文字的高度，具体说是两行文字间基线的距离。CSS中起高度作用的是height和line-height，没有定义height属性，最终其表现作用一定是line-height。<br>单行文本垂直居中：把line-height值设置为height一样大小的值可以实现单行文字的垂直居中，其实也可以把height删除。<br>多行文本垂直居中：需要设置display属性为inline-block。</p>
+<h2 id="8-怎么让Chrome支持小于12px-的文字？"><a href="#8-怎么让Chrome支持小于12px-的文字？" class="headerlink" title="8.怎么让Chrome支持小于12px 的文字？"></a>8.怎么让Chrome支持小于12px 的文字？</h2><p>p{font-size:10px;-webkit-transform:scale(0.8);} //0.8是缩放比例</p>
+<h2 id="9-让页面里的字体变清晰，变细用CSS怎么做？"><a href="#9-让页面里的字体变清晰，变细用CSS怎么做？" class="headerlink" title="9.让页面里的字体变清晰，变细用CSS怎么做？"></a>9.让页面里的字体变清晰，变细用CSS怎么做？</h2><p>-webkit-font-smoothing在window系统下没有起作用，但是在IOS设备上起作用-webkit-font-smoothing：antialiased是最佳的，灰度平滑。</p>
 <blockquote>
-<p>如果有相关的问题可在下面评论区留言，很乐意为你解答。</p>
+<p>转载文章时请注明本文的出处 || <a href="http://www.blog.54whg.cn" target="_blank" rel="noopener">咕噜先森的博客</a> 作者-&gt;@王华港</p>
 </blockquote>
 <script>
 var _hmt = _hmt || [];
@@ -506,172 +356,16 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
-      
-    </div>
-    
-    
-    
 
-    
-      <div>
-        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/images/wechat.jpg" alt="CDU-王华港 wechat" style="width: 200px; max-width: 100%;"/>
-    <div>欢迎关注我的个人微信公众号[咕噜有得聊]，一起学习更多好的文章！</div>
-</div>
-
-      </div>
-    
-
-    
-      <div>
-        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
-  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>打赏</span>
-  </button>
-  <div id="QR" style="display: none;">
-
-    
-      <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/mm_facetoface_collect_qrcode_1521275422135.png" alt="CDU-王华港 微信支付"/>
-        <p>微信支付</p>
-      </div>
-    
-
-    
-      <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/1521275354514.jpg" alt="CDU-王华港 支付宝"/>
-        <p>支付宝</p>
-      </div>
-    
-
-    
-
-  </div>
-</div>
-
-      </div>
-    
-
-    
-    <div>
-      
         
-<div class="my_post_copyright">
-  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-  
-  <!-- JS库 sweetalert 可修改路径 -->
-  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/2018/04/11/TencentView/">面经 | 腾讯春季校招前端实习生面试经历 | 感觉凉了</a></p>
-  <p><span>文章作者:</span><a href="/" title="访问 CDU-王华港 的个人博客">CDU-王华港</a></p>
-  <p><span>发布时间:</span>2018年04月11日 - 21:04</p>
-  <p><span>最后更新:</span>2018年04月12日 - 12:04</p>
-  <p><span>原始链接:</span><a href="/2018/04/11/TencentView/" title="面经 | 腾讯春季校招前端实习生面试经历 | 感觉凉了">http://www.wanghuagang.cn/2018/04/11/TencentView/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.wanghuagang.cn/2018/04/11/TencentView/"  aria-label="复制成功！"></i></span>
-  </p>
-  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
-</div>
-<script> 
-    var clipboard = new Clipboard('.fa-clipboard');
-      $(".fa-clipboard").click(function(){
-      clipboard.on('success', function(){
-        swal({   
-          title: "",   
-          text: '复制成功',
-          icon: "success", 
-          showConfirmButton: true
-          });
-        });
-    });  
-</script>
-
-      
-</div>
-      <div>
-  
-    <div>
-    
-        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
-    
-</div>
-  
-</div>
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/面经/" rel="tag"><i class="fa fa-tag"></i> 面经</a>
-          
-        </div>
-      
-
+      </div>
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/04/04/quickApp/" rel="next" title="快运用 | 入门体验小教程 | 快到飞起">
-                <i class="fa fa-chevron-left"></i> 快运用 | 入门体验小教程 | 快到飞起
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/04/19/sort/" rel="prev" title="【算法详解】冒泡/选择/插入/快速排序详解·JS实现">
-                【算法详解】冒泡/选择/插入/快速排序详解·JS实现 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-<span class="jiathis_txt">分享到：</span>
-<a class="jiathis_button_fav">收藏夹</a>
-<a class="jiathis_button_copy">复制网址</a>
-<a class="jiathis_button_email">邮件</a>
-<a class="jiathis_button_weixin">微信</a>
-<a class="jiathis_button_qzone">QQ空间</a>
-<a class="jiathis_button_tqq">腾讯微博</a>
-<a class="jiathis_button_douban">豆瓣</a>
-<a class="jiathis_button_share">一键分享</a>
-
-<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
-<a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-var jiathis_config={
-  data_track_clickback:true,
-  summary:"",
-  shortUrl:false,
-  hideMore:false
-}
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
-<!-- JiaThis Button END -->
       
     </div>
+    
+    
+    
   </div>
 
 
@@ -736,7 +430,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -747,7 +441,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">分类</span>
                 
               </div>
@@ -758,7 +452,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -807,7 +501,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正式开始"><span class="nav-number">2.</span> <span class="nav-text">正式开始</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#感受"><span class="nav-number">3.</span> <span class="nav-text">感受</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-margin和padding分别适合什么场景使用？"><span class="nav-number">1.</span> <span class="nav-text">1.margin和padding分别适合什么场景使用？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-元素竖向的百分比设定是相对于容器的高度吗？"><span class="nav-number">2.</span> <span class="nav-text">2.元素竖向的百分比设定是相对于容器的高度吗？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-全屏滚动的原理是什么？用到了CSS的哪些属性？"><span class="nav-number">3.</span> <span class="nav-text">3.全屏滚动的原理是什么？用到了CSS的哪些属性？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-什么是响应式设计？响应式设计的基本原理是什么？如何兼容低版本的IE？"><span class="nav-number">4.</span> <span class="nav-text">4.什么是响应式设计？响应式设计的基本原理是什么？如何兼容低版本的IE？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-视差滚动效果？"><span class="nav-number">5.</span> <span class="nav-text">5.视差滚动效果？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-before-和-after中双冒号和单冒号有什么区别？解释一下这2个伪元素的作用"><span class="nav-number">6.</span> <span class="nav-text">6.::before 和 :after中双冒号和单冒号有什么区别？解释一下这2个伪元素的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-你对line-height是如何理解的？"><span class="nav-number">7.</span> <span class="nav-text">7.你对line-height是如何理解的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-怎么让Chrome支持小于12px-的文字？"><span class="nav-number">8.</span> <span class="nav-text">8.怎么让Chrome支持小于12px 的文字？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-让页面里的字体变清晰，变细用CSS怎么做？"><span class="nav-number">9.</span> <span class="nav-text">9.让页面里的字体变清晰，变细用CSS怎么做？</span></a></li></ol></div>
             
 
           </div>
@@ -856,7 +550,7 @@ var jiathis_config={
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博主已共分享 25.7k 字</span>
+  <span class="post-count">博主已共分享 20.2k 字</span>
 </div>
 
         
