@@ -77,7 +77,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Vue，自动化部署, webpack" />
 
 
 
@@ -88,17 +88,18 @@
 
 
 
-<meta name="description" content="专注学习，专注分享！">
+<meta name="description" content="Webpack 多环境打包命令配置在平时开发或者部署项目过程中，经常出现切换环境、API、配置文件等，每次修改麻烦，而且有时可能忘掉某些切换导致项目跑出来有问题。 那我们就想是否可以根据不同的运行/打包命令来自动化的进行相关文件的切换，省时省力，还不会出错。其实我们只需要关注process.env.NODE_ENV的值就可以了。  process 对象是一个全局变量，它提供有关当前 Node.js">
+<meta name="keywords" content="Vue，自动化部署, webpack">
 <meta property="og:type" content="article">
-<meta property="og:title" content="咕噜先森的博客">
+<meta property="og:title" content="Webpack 多环境打包命令配置">
 <meta property="og:url" content="http://www.wanghuagang.cn/2020/03/18/webpackBuildConfig/index.html">
 <meta property="og:site_name" content="咕噜先森的博客">
-<meta property="og:description" content="专注学习，专注分享！">
+<meta property="og:description" content="Webpack 多环境打包命令配置在平时开发或者部署项目过程中，经常出现切换环境、API、配置文件等，每次修改麻烦，而且有时可能忘掉某些切换导致项目跑出来有问题。 那我们就想是否可以根据不同的运行/打包命令来自动化的进行相关文件的切换，省时省力，还不会出错。其实我们只需要关注process.env.NODE_ENV的值就可以了。  process 对象是一个全局变量，它提供有关当前 Node.js">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-18T12:31:03.000Z">
+<meta property="og:updated_time" content="2020-03-18T12:34:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="咕噜先森的博客">
-<meta name="twitter:description" content="专注学习，专注分享！">
+<meta name="twitter:title" content="Webpack 多环境打包命令配置">
+<meta name="twitter:description" content="Webpack 多环境打包命令配置在平时开发或者部署项目过程中，经常出现切换环境、API、配置文件等，每次修改麻烦，而且有时可能忘掉某些切换导致项目跑出来有问题。 那我们就想是否可以根据不同的运行/打包命令来自动化的进行相关文件的切换，省时省力，还不会出错。其实我们只需要关注process.env.NODE_ENV的值就可以了。  process 对象是一个全局变量，它提供有关当前 Node.js">
 
 
 
@@ -143,7 +144,7 @@
   daovoice('update');
   </script>
 
-  <title> | 咕噜先森的博客</title>
+  <title>Webpack 多环境打包命令配置 | 咕噜先森的博客</title>
   
 
 
@@ -342,7 +343,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline"></h2>
+          <h2 class="post-title" itemprop="name headline">Webpack 多环境打包命令配置</h2>
         
 
         <div class="post-meta">
@@ -354,7 +355,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-18T20:31:03+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-18T12:02:59+08:00">
                 2020-03-18
               </time>
             
@@ -364,6 +365,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Vue/" itemprop="url" rel="index">
+                    <span itemprop="name">Vue</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -382,7 +405,7 @@
 
           
           
-             <span id="/2020/03/18/webpackBuildConfig/" class="leancloud_visitors" data-flag-title="">
+             <span id="/2020/03/18/webpackBuildConfig/" class="leancloud_visitors" data-flag-title="Webpack 多环境打包命令配置">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -408,7 +431,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  877
                 </span>
               
 
@@ -424,7 +447,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  4
                 </span>
               
             </div>
@@ -445,7 +468,38 @@
       
 
       
-        
+        <h1 id="Webpack-多环境打包命令配置"><a href="#Webpack-多环境打包命令配置" class="headerlink" title="Webpack 多环境打包命令配置"></a>Webpack 多环境打包命令配置</h1><p>在平时开发或者部署项目过程中，经常出现切换环境、API、配置文件等，每次修改麻烦，而且有时可能忘掉某些切换导致项目跑出来有问题。</p>
+<p>那我们就想是否可以根据不同的运行/打包命令来自动化的进行相关文件的切换，省时省力，还不会出错。其实我们只需要关注<font color="#0099ff" size="2">process.env.NODE_ENV</font>的值就可以了。</p>
+<blockquote>
+<p>process 对象是一个全局变量，它提供有关当前 Node.js 进程的信息并对其进行控制。 作为一个全局变量，它始终可供 Node.js 应用程序使用，无需使用 require/import, 直接用就好了。</p>
+</blockquote>
+<p>例如： 我们可以根据不同的环境变量来设置不同的API</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (process.env.NODE_ENV == <span class="string">'development'</span>) &#123;</span><br><span class="line">    API.baseURL = testUrl;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    API.baseURL = baseURL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>那我们的思路： 应该是在设置打包命令的时候配置不同的环境变量</p>
+</blockquote>
+<p>目前我们的默认的打包命名：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"dev"</span>: <span class="string">"webpack-dev-server --inline --progress --config build/webpack.dev.conf.js"</span>,</span><br><span class="line">    <span class="string">"start"</span>: <span class="string">"npm run dev"</span>,</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"node build/build.js"</span>,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>那我们怎样才能设置环境变量？</p>
+</blockquote>
+<p>我们可以采用cross-env这个包，它是运行跨平台设置和使用Node中的环境变量的脚本。主要因为在windows版本和linux中设置NODE_ENV的语法不同, 它进行了封装和兼容，直接安装依赖包就可以用了。</p>
+<p><code>npm isntall cross-env -D</code></p>
+<p>现在我们开始配置我们自己的打包命令</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"dev:test"</span>: <span class="string">"cross-env NODE_ENV=test webpack-dev-server --inline --progress --config build/webpack.dev.conf.js"</span>,</span><br></pre></td></tr></table></figure>
+<p>我们配置了dev:test命令，与dev命令不同的就是，通过cross_env 配置了node的环境变量为test，现在还需要在config/新建一个test.env.js的文件，直接把config/dev.env.js的拷贝过来然后改动一下即可。把一下内容搞进去就可以了。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"><span class="keyword">const</span> merge = <span class="built_in">require</span>(<span class="string">'webpack-merge'</span>)</span><br><span class="line"><span class="keyword">const</span> devEnv = <span class="built_in">require</span>(<span class="string">'./dev.env'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = merge(devEnv, &#123;</span><br><span class="line">    NODE_ENV: <span class="string">'"test"'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>到目前为止我们通过命令的方式配置好了，但是我们还需要改webpack的配置，使得webpack在编译的时候使用我们配置的环境变量。</p>
+<p>build/webpack.dev.conf.js中：<br>我们找到以下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> webpackConfig = merge(baseWebpackConfig, &#123;</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> webpack.DefinePlugin(&#123;</span><br><span class="line">            <span class="string">'process.env'</span>: env</span><br><span class="line">        &#125;),</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>这里的DefinePlugin插件允许创建一个在编译时可以配置的全局常量。<br>现在在这里我们可以添加一个判断，来动态的指定process.env.NODE_ENV：</p>
+<blockquote>
+<p><font color="#0099ff" size="2" face="黑体">注意踩坑: 因为这个插件直接执行文本替换，给定的值必须包含字符串本身内的实际引号。通常，有两种方式来达到这个效果，使用 ‘“production”‘, 或者使用 JSON.stringify(‘production’)。 ——webpack官网</font><br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dev = <span class="built_in">require</span>(<span class="string">'../config/dev.env'</span>)</span><br><span class="line"><span class="keyword">const</span> test = <span class="built_in">require</span>(<span class="string">'../config/test.env'</span>)</span><br><span class="line"><span class="keyword">const</span> isDev = process.env.NODE_ENV === <span class="string">'development'</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>我们通过环境变量来判断是dev还是test环境，然后我们再来配置全局变量。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> webpackConfig = merge(baseWebpackConfig, &#123;</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> webpack.DefinePlugin(&#123;</span><br><span class="line">            <span class="comment">// 'process.env': env</span></span><br><span class="line">            <span class="string">'process.env'</span>: isDev ? dev : test</span><br><span class="line">        &#125;),</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>OK,到目前为止，我们的环境变量设置完成，我们到main.js中可以打印出来看，不同打包命令拿到的环境变量是不一样的，有了这个以后我们就可以根据我们的需求为所欲为的。</p>
+<p>main.js中：<br><code>console.log(&#39;NODE_ENV:&#39;, process.env.NODE_ENV) // NODE_ENV: test</code></p>
+
       
     </div>
     
@@ -497,6 +551,35 @@
     <div>
       
         
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2020/03/18/webpackBuildConfig/">Webpack 多环境打包命令配置</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 CDU-王华港 的个人博客">CDU-王华港</a></p>
+  <p><span>发布时间:</span>2020年03月18日 - 12:03</p>
+  <p><span>最后更新:</span>2020年03月18日 - 20:03</p>
+  <p><span>原始链接:</span><a href="/2020/03/18/webpackBuildConfig/" title="Webpack 多环境打包命令配置">http://www.wanghuagang.cn/2020/03/18/webpackBuildConfig/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://www.wanghuagang.cn/2020/03/18/webpackBuildConfig/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+        });
+    });  
+</script>
+
       
 </div>
       <div>
@@ -509,6 +592,12 @@
   
 </div>
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Vue/" rel="tag"><i class="fa fa-tag"></i> Vue</a>
+          
+        </div>
       
 
       
@@ -608,8 +697,17 @@ var jiathis_config={
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -690,6 +788,22 @@ var jiathis_config={
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Webpack-多环境打包命令配置"><span class="nav-number">1.</span> <span class="nav-text">Webpack 多环境打包命令配置</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -732,7 +846,7 @@ var jiathis_config={
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博主已共分享 20.2k 字</span>
+  <span class="post-count">博主已共分享 21.1k 字</span>
 </div>
 
         

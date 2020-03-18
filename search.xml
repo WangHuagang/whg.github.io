@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title><![CDATA[Webpack 多环境打包命令配置]]></title>
     <url>%2F2020%2F03%2F18%2FwebpackBuildConfig%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[Webpack 多环境打包命令配置在平时开发或者部署项目过程中，经常出现切换环境、API、配置文件等，每次修改麻烦，而且有时可能忘掉某些切换导致项目跑出来有问题。 那我们就想是否可以根据不同的运行/打包命令来自动化的进行相关文件的切换，省时省力，还不会出错。其实我们只需要关注process.env.NODE_ENV的值就可以了。 process 对象是一个全局变量，它提供有关当前 Node.js 进程的信息并对其进行控制。 作为一个全局变量，它始终可供 Node.js 应用程序使用，无需使用 require/import, 直接用就好了。 例如： 我们可以根据不同的环境变量来设置不同的API 12345if (process.env.NODE_ENV == 'development') &#123; API.baseURL = testUrl;&#125; else &#123; API.baseURL = baseURL;&#125; 那我们的思路： 应该是在设置打包命令的时候配置不同的环境变量 目前我们的默认的打包命名：12345"scripts": &#123; "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js", "start": "npm run dev", "build": "node build/build.js",&#125;, 那我们怎样才能设置环境变量？ 我们可以采用cross-env这个包，它是运行跨平台设置和使用Node中的环境变量的脚本。主要因为在windows版本和linux中设置NODE_ENV的语法不同, 它进行了封装和兼容，直接安装依赖包就可以用了。 npm isntall cross-env -D 现在我们开始配置我们自己的打包命令 1"dev:test": "cross-env NODE_ENV=test webpack-dev-server --inline --progress --config build/webpack.dev.conf.js", 我们配置了dev:test命令，与dev命令不同的就是，通过cross_env 配置了node的环境变量为test，现在还需要在config/新建一个test.env.js的文件，直接把config/dev.env.js的拷贝过来然后改动一下即可。把一下内容搞进去就可以了。 1234567'use strict'const merge = require('webpack-merge')const devEnv = require('./dev.env')module.exports = merge(devEnv, &#123; NODE_ENV: '"test"'&#125;) 到目前为止我们通过命令的方式配置好了，但是我们还需要改webpack的配置，使得webpack在编译的时候使用我们配置的环境变量。 build/webpack.dev.conf.js中：我们找到以下代码： 1234567const webpackConfig = merge(baseWebpackConfig, &#123; plugins: [ new webpack.DefinePlugin(&#123; 'process.env': env &#125;), ]&#125;) 这里的DefinePlugin插件允许创建一个在编译时可以配置的全局常量。现在在这里我们可以添加一个判断，来动态的指定process.env.NODE_ENV： 注意踩坑: 因为这个插件直接执行文本替换，给定的值必须包含字符串本身内的实际引号。通常，有两种方式来达到这个效果，使用 ‘“production”‘, 或者使用 JSON.stringify(‘production’)。 ——webpack官网123const dev = require('../config/dev.env')const test = require('../config/test.env')const isDev = process.env.NODE_ENV === 'development' 我们通过环境变量来判断是dev还是test环境，然后我们再来配置全局变量。 12345678const webpackConfig = merge(baseWebpackConfig, &#123; plugins: [ new webpack.DefinePlugin(&#123; // 'process.env': env 'process.env': isDev ? dev : test &#125;), ]&#125;) OK,到目前为止，我们的环境变量设置完成，我们到main.js中可以打印出来看，不同打包命令拿到的环境变量是不一样的，有了这个以后我们就可以根据我们的需求为所欲为的。 main.js中：console.log(&#39;NODE_ENV:&#39;, process.env.NODE_ENV) // NODE_ENV: test]]></content>
+      <categories>
+        <category>Vue</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Webpack 前端自动化部署项目至服务器（Vue）]]></title>
