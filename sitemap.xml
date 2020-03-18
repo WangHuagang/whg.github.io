@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.wanghuagang.cn/2020/03/18/webpackBuildConfig/</loc>
+    
+    <lastmod>2020-03-18T12:31:03.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.wanghuagang.cn/2020/03/15/autoDeploy/</loc>
     
     <lastmod>2020-03-15T13:28:57.000Z</lastmod>

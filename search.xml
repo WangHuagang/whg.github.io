@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>%2F2020%2F03%2F18%2FwebpackBuildConfig%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
     <title><![CDATA[Webpack 前端自动化部署项目至服务器（Vue）]]></title>
     <url>%2F2020%2F03%2F15%2FautoDeploy%2F</url>
     <content type="text"><![CDATA[对于没有搭建Jenkins等自动化打包平台来说，平时部署前端项目流程是：先部署到测试环境ok后再发布到生产环境上，部署到测试环境用 xshell 连上服务器，然后用 xftp /winSCP连接服务器，然后本地 build 项目，接着把 build 好的文件通过 xftp/winSCP 上传到服务器上，整个流程感觉稍有繁琐，重复。 我们可以利用scp2自动化部署到静态文件服务器，从而实现自动化部署前端项目！ 1、安装scp2scp2是一个基于ssh2增强实现，纯粹使用JavaScript编写。而ssh2就是一个使用nodejs对于SSH2的模拟实现。scp是Linux系统下基于SSH登陆进行安全的远程文件拷贝命令。这里我们就用这个功能，在Vue编译构建成功之后，将项目推送至测试/生产环境，以方便测试，提高效率。安装scp2：npm install scp2 --save-dev 2、配置测试/生产环境 服务器SSH远程登陆基本信息在项目根目录下新建deploy文件夹，再新建config.js来存放服务器的配置信息:123456789101112131415161718192021222324/** * 服务器相关配置 */const SERVER_LIST = [ &#123; id: 'test', name: '测试环境', host: '80.xxx.xx.xx', // ip port: 22, // 端口 username: 'root', password: '******', path: '/opt/xxx/front' // 项目静态文件存放地址 &#125;, &#123; id: 'prod', name: '正式环境', host: '101.x.xx.xx', port: 22, username: 'root', password: '******', path: '/opt/xxx/front' &#125;];module.exports = SERVER_LIST; 3、使用scp2库,创建自动化部署脚本12345678910111213141516171819202122232425const scpClient = require('scp2');const ora = require('ora');const chalk = require('chalk');const server = require('./config);const spinner = ora('正在发布到' + (process.env.NODE_ENV === 'prod' ? '生产' : '测试') + '服务器...');spinner.start();scpClient.scp( 'dist/', &#123; host: server.host, port: server.port, username: server.username, password: server.password, path: server.path &#125;, function (err) &#123; spinner.stop(); if (err) &#123; console.log(chalk.red('发布失败.\n')); throw err; &#125; else &#123; console.log(chalk.green('Success! 成功发布到' + (process.env.NODE_ENV === 'prod' ? '生产' : '测试') + '服务器! \n')); &#125; &#125;); 通过scp库我们就能把dist文件夹下的所有文件上传到服务器指定路径，从而完成我们项目的自动化部署。 4、添加 package.json 中的 scripts 命令, 自定义名称为 “deploy”12345"scripts": &#123; "serve": "vue-cli-service serve --mode dev", "build": "vue-cli-service build --mode prod", "deploy": "cross-env NODE_ENV=prod node ./deploy"&#125;, 至此，我们直接执行命令npm run deploy就能完成自动化部署。 但是，目前还有几个问题需要解决： 怎样区分多环境部署？ 服务器账号和密码为了保密不想写在配置里怎么办？ 想备份上一版本的文件怎么办？ 4.1 区分多环境部署 第一种方法：通过配置不同环境不同的部署命令来区分，比如：npm run deploy:test/npm run deploy:prod，然后通过不同命令的环境变量来读取不同的配置文件。 12"deploy:dev": "cross-env NODE_ENV=dev node ./deploy","deploy:prod": " cross-env NODE_ENV=prod node ./deploy" 第二种方法：通过用户从命令行的输入来获取部署的环境，将在下一点详细讲解。 4.2 服务器账号和密码为了保密不想写在配置里怎么办？为了保密性，这两个信息不会存放在配置文件里，那么我们可以通过node 的readline模块来让用户输入账号和密码。导入readline模块：const readline = require(&#39;readline&#39;); 创建readline实例：1234const rl = readline.createInterface(&#123; input: process.stdin, output: process.stdout&#125;) 利用readlinde的quetion方法来“提问”，然后接受用户输入的值：123rl.question(‘请输入服务器账号：’, (as) =&gt; &#123; console.log(as);&#125;) 至此，我们就能拿到用户输入的账号了。现在我们整理一下来获取用户输入的环境、账号、密码：123456789101112131415161718192021222324let server = null;const questions = ['Please input publish environment(test\\prod\\yanshi): ', 'Please input server username: ', 'Please input server password: ']const linelimit = 3; // 用户输入的行数let inputArr = [];let index = 0;function runQueLoop() &#123; if (index == linelimit) &#123; server = config.find(i =&gt; i.id == inputArr[0]) //通过id匹配环境 server.username = inputArr[1]; server.password = inputArr[2]; copyFile(); return; &#125; rl.question(questions[index], (as) =&gt; &#123; inputArr[index] = as; index++; runQueLoop() &#125;)&#125;rl.on('close', () =&gt; &#123; process.exit(0) &#125;)runQueLoop() OK, 我们拿到了用户输入的环境、服务器账号和密码，我们服务器的配置信息就完整了，并且保证了私密信息的保密性，也提升了与用户的交互。 4.3 如何备份上一版本的文件？备份文件我首先想到的就是通过使用Linux的命令行还进行文件的操作，大体的思路： 进入到静态文件存放的根目录； 新建一个备份文件夹（我们可以通过时间戳来命名，也方便回溯版本）； 将现在正运行版本文件夹下的所有文件拷贝的新建的备份文件夹； 文件备份就完成了，然后我们再把我们需要发布的静态文件上传即可！有了思路过后，我们来使用ssh2库来执行脚本命令，实现我们的思路：12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455var Client = require('ssh2').Client;var conn = new Client();function copyFile() &#123; let pathArr = server.path.split('/'), rootFolder = pathArr[pathArr.length-1];//获取根文件夹 pathArr.pop(); let rootPath = pathArr.join('/'); const conn = new Client(); conn.on('ready', function () &#123; conn.exec(`cd $&#123;rootPath&#125;\n mkdir $&#123;rootFolder&#125;$&#123;currTime&#125;\n cp -r $&#123;rootFolder&#125; $&#123;rootFolder&#125;$&#123;currTime&#125;\n rm -rf $&#123;rootFolder&#125;`, function (err, stream) &#123; if (err) throw err; stream.on('close', function (code, signal) &#123; // 在执行shell命令后，开始上传部署项目代码 spinner.start(); scpClient.scp( './dist', &#123; host: server.host, port: server.port, username: server.username, password: server.password, path: server.path &#125;, function (err) &#123; spinner.stop(); if (err) &#123; console.log(chalk.red('Fail! 发布失败.\n')); rl.close(); throw err; &#125; else &#123; console.log(chalk.green('Success! 成功发布到' + server.host + '服务器! \n')); rl.close(); &#125; &#125; ); conn.end(); &#125;) &#125;); &#125;) .on('error', function (err) &#123; console.log(chalk.red('Fail! 服务器连接失败.\n')); rl.close(); throw err; &#125;) .connect(&#123; host: server.host, port: server.port, username: server.username, password: server.password &#125;);&#125; OK，在这里我们通过配置文件里的path来动态获取根目录和根文件夹，执行备份命令后再进行文件上传！]]></content>
@@ -199,17 +204,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[base64编码的原理及分析]]></title>
-    <url>%2F2018%2F03%2F18%2Fbase64%2F</url>
-    <content type="text"><![CDATA[1.为什么要使用base64编码因为有些网络传送渠道并不支持所有的字节，例如传统的邮件只支持可见字符的传送，像ASCII码的控制字符就不能通过邮件传送。这样就受到了很大的限制，比如图片二进制流的每个字节不可能全部是可见字符，所以就传送不了。最好的方法就是在不改变传统协议的情况下，开辟一种新的方案来支持二进制文件的传送。把不可见字符用可见字符来表示。而Base64就是一种基于64个可见字符来表示二进制数据的表示方法。 提示：不可见字符其实并不是不显示，只是这些字符在屏幕上显示不出来，比如：换行符、回车、退格等字符。 2.base64编码的原理Base64可以将ASCII字符串或者是二进制编码成只包含A—Z，a—z，0—9，+，/ 这64个字符（ 26个大写字母，26个小写字母，10个数字，1个+，一个 / 刚好64个字符）。 Base64的编码规则是将3个8位字节(3×8=24位)编码成4个6位的字节(4×6=24位)，之后在每个6位字节前面，补充两个0，形成4个8位字节的形式，那么取值范围就变成了0~63。又因为2的6次方等于64，所以每6个位组成一个单元。 下图为base64的字符转换表： 说太多了感觉复杂，直接上例子： 该图片转载自 https://www.jianshu.com/p/dd8bffc91c3d 所以，abc的base64的编码为YWJj；ab的base64编码为YWI=；a的base64编码为YQ==。 若末尾的为0，则对应的是A，但通常都用=来表示。因为 = 字符并不在Base64编码索引表中，其意义在于结束符号，在Base64解码时遇到 = 时即可知道一个Base64编码字符串结束。解码是对编码的逆向操作，但注意一点：对于最后的两个 = 字符，转换成两个A 字符，再转成对应的两个6比特二进制0值，接着转成原始字符之前，需要将最后的两个6比特二进制0值丢弃，因为它们实际上不携带有效信息。 在实际开发过程中，base64一般用于字符和图片的编码，最后，推荐一个在线base64的编码与解码网址：base64编码 转载文章时请注明本文的出处 || 咕噜先森的博客 作者-&gt;@王华港 var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?cb26b3220fad854a3119dd8d11ddc6eb"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })();]]></content>
-      <categories>
-        <category>编程</category>
-      </categories>
-      <tags>
-        <tag>编程</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[Python实战数据结构——列表/元组]]></title>
     <url>%2F2018%2F03%2F18%2FsingCount%2F</url>
     <content type="text"><![CDATA[Python实战题目比赛评分：校园歌手大奖赛中，每个歌手的得分由10名评委和观众决定，最终得分的规则是去掉10名评委所打分数的一个最高分和一个最低分，再加上所有观众评委分数后的平均值。请编写程序输入某个选手的10个评委分数和观众评分，计算其最后得分。 实战分析1.先接受用户输入的所有数据，存在列表中，此时的数据为字符串，应当转换成float，因为求平均分可能会出现小数。 2.利用Python的内置函数sort()进行排序，这里不用管是升序还是降序。 3.利用pop函数去掉第一个和最后一个数，即达到了去掉最高分和最低分的要求。 4.利用for in 遍历出剩下的所有数，并进行求和sum。 5.将sum与观众的分相加除以总人数便可算出最终得分。 Python代码123456789101112sum=0;inputScore=input("请输入10个分数，以,隔开:");aScore=input("请输入观众评分：")splitScore=inputScore.split(',');intScore = list(map(float, splitScore))# 把字符串转化成floatintScore.sort()intScore.pop();#去除末尾的数intScore.pop(0);#去除最开始的数for x in intScore: sum+=x;avg=(sum+float(aScore))/(len(intScore)+1);print("该选手最终得分：%.2f"%avg) 转载文章时请注明本文的出处 || 咕噜先森的博客 作者-&gt;@王华港 var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?cb26b3220fad854a3119dd8d11ddc6eb"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })();]]></content>
@@ -218,6 +212,17 @@
       </categories>
       <tags>
         <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[base64编码的原理及分析]]></title>
+    <url>%2F2018%2F03%2F18%2Fbase64%2F</url>
+    <content type="text"><![CDATA[1.为什么要使用base64编码因为有些网络传送渠道并不支持所有的字节，例如传统的邮件只支持可见字符的传送，像ASCII码的控制字符就不能通过邮件传送。这样就受到了很大的限制，比如图片二进制流的每个字节不可能全部是可见字符，所以就传送不了。最好的方法就是在不改变传统协议的情况下，开辟一种新的方案来支持二进制文件的传送。把不可见字符用可见字符来表示。而Base64就是一种基于64个可见字符来表示二进制数据的表示方法。 提示：不可见字符其实并不是不显示，只是这些字符在屏幕上显示不出来，比如：换行符、回车、退格等字符。 2.base64编码的原理Base64可以将ASCII字符串或者是二进制编码成只包含A—Z，a—z，0—9，+，/ 这64个字符（ 26个大写字母，26个小写字母，10个数字，1个+，一个 / 刚好64个字符）。 Base64的编码规则是将3个8位字节(3×8=24位)编码成4个6位的字节(4×6=24位)，之后在每个6位字节前面，补充两个0，形成4个8位字节的形式，那么取值范围就变成了0~63。又因为2的6次方等于64，所以每6个位组成一个单元。 下图为base64的字符转换表： 说太多了感觉复杂，直接上例子： 该图片转载自 https://www.jianshu.com/p/dd8bffc91c3d 所以，abc的base64的编码为YWJj；ab的base64编码为YWI=；a的base64编码为YQ==。 若末尾的为0，则对应的是A，但通常都用=来表示。因为 = 字符并不在Base64编码索引表中，其意义在于结束符号，在Base64解码时遇到 = 时即可知道一个Base64编码字符串结束。解码是对编码的逆向操作，但注意一点：对于最后的两个 = 字符，转换成两个A 字符，再转成对应的两个6比特二进制0值，接着转成原始字符之前，需要将最后的两个6比特二进制0值丢弃，因为它们实际上不携带有效信息。 在实际开发过程中，base64一般用于字符和图片的编码，最后，推荐一个在线base64的编码与解码网址：base64编码 转载文章时请注明本文的出处 || 咕噜先森的博客 作者-&gt;@王华港 var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?cb26b3220fad854a3119dd8d11ddc6eb"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })();]]></content>
+      <categories>
+        <category>编程</category>
+      </categories>
+      <tags>
+        <tag>编程</tag>
       </tags>
   </entry>
   <entry>
